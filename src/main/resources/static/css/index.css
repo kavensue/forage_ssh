@@ -1,0 +1,39 @@
+html{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../img/login_bg.jpg);
+    background-size: 100% 100%;
+    font-family: 宋体;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 200px;
+    padding: 30px 40px;
+}
+input{
+    width: 200px;
+    height: 40px;
+    margin-bottom: 20px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+input:hover{
+    background-color: #333;
+    color: #fff;
+}
+input:last-child{
+    margin-bottom: 0;
+}
+.header{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: orange;
+}
