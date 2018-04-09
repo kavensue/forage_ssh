@@ -1,0 +1,19 @@
+spring:
+  thymeleaf:
+      mode: HTML5
+      encoding: utf-8
+      cache: false
+      servlet:
+        content-type: text/html
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/forage_system?characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: druid
+    password: 123456
+
+  jpa:
+    database: MySQL
+    format_sql: true
+    hibernate:
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: true
