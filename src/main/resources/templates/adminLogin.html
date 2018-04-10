@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>管理员登录界面</title>
+    <link rel="stylesheet" href="/css/login.css" />
+</head>
+<body>
+
+<h2 class="header">华农猪场饲料管理系统</h2>
+<div class="container">
+    <div class="login_part">
+        <form role="form" class="login" method="get" th:action="@{/doAdminLogin}" >
+            <input type="text" class="form-control" id="username" name="username" placeholder="用户名" />
+            <input type="text" class="form-control" id="password" name="password" placeholder="密码" />
+            <button type="submit" class="btn-submit">登录</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
