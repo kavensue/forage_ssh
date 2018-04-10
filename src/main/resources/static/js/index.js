@@ -17,7 +17,4 @@ window.onload = function(){
             navIndex: 1
         }
     }).$mount('#app');
-
-
-
 } 
