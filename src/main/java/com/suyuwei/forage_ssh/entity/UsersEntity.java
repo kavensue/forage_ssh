@@ -1,20 +1,24 @@
 package com.suyuwei.forage_ssh.entity;
 
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "admin")
-public class AdminEntity {
+@Table(name = "users")
+public class UsersEntity {
     @Id
     @GeneratedValue
-    @Column(name = "admin_id")
+    @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "admin_name")
+    @Column(name = "user_name")
     private String name;
 
-    @Column(name = "admin_password")
+    @Column(name = "user_password")
     private String password;
+
+    @Column(name = "user_type")
+    private String type;
 
     public Long getId() {
         return id;
@@ -38,5 +42,13 @@ public class AdminEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

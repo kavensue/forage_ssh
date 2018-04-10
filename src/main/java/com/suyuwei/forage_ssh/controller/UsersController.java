@@ -1,20 +1,21 @@
 package com.suyuwei.forage_ssh.controller;
 
-import com.suyuwei.forage_ssh.service.AdminService;
+import com.suyuwei.forage_ssh.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class AdminController {
+public class UsersController {
     @Autowired
-    private AdminService adminService;
+    private UsersService usersService;
 
     /**
-     * 登录重定向
+     * 仓库管理者的菜单重定向
      * @return
      */
     @RequestMapping(value = "/adminLogin",method = RequestMethod.GET)
@@ -32,18 +33,15 @@ public class AdminController {
     public String adminForageGainManagement(){return "adminForageGainManagement";}
 
     /**
-     * 进行密码验证
+     * 进行账户密码验证
      * @param request
      * @return
      */
-    @RequestMapping(value = "/doAdminLogin", method = RequestMethod.GET)
-    public String doLogin(HttpServletRequest request) {
-        int loginStatus = adminService.loginJudgement(request);
-        if (loginStatus == 0)
-            return "adminIndex";
-        else
-            return "adminLogin";
+    @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
+    @ResponseBody
+    public int doLogin(HttpServletRequest request) {
+        int loginStatus = usersService.loginJudgement(request);
+        return loginStatus;
     }
-
 
 }
