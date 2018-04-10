@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8"/>
     <title>饲养员主界面</title>
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="../static/js/index.js"></script>
+    <script src="../static/js/templates.js"></script>
 </head>
 <body>
-<h2 class="header">华农猪场饲料管理系统</h2>
-<div class="container">
-<input type="button" value="问题反馈" name="problem" onclick="{window.location.href='/problem.html'}"/>
-<input type="button" value="领取饲料" name="foragegain" onclick="{window.location.href='/foragegain.html'}"/>
-<input type="button" value="喂食任务" name="feedtask" onclick="{window.location.href='/feedtask.html'}"/>
-<input type="button" value="退出系统" name="exit" onclick="{window.location.href='/login.html'}"/>
-    <input type="button" value="退出系统" name="exit" onclick="{window.location.href='/login.html'}"/>
-</div>
+    <div id="app">
+        <div class="wrapper">
+            <h4>华农猪场饲料管理系统</h4>
+            <ul class="left-nav">
+                <li v-bind:class="{navActive : navIndex==1 ? true : false}" @click="navIndex = 1">
+                <router-link to="/problem">问题反馈</router-link></li>
+                <li v-bind:class="{navActive : navIndex==2 ? true : false}" @click="navIndex = 2">
+                <router-link to="/foragegain">领取饲料</router-link></li>
+                <li v-bind:class="{navActive : navIndex==3 ? true : false}" @click="navIndex = 3">
+                <router-link to="/feedtask">喂食任务</router-link></li>
+                <li v-bind:class="{navActive : navIndex==4 ? true : false}" @click="navIndex = 4">
+                <router-link to="/exit">退出系统</router-link></li>
+            </ul>
+            <router-view class="router-view"></router-view>
+        </div>
+    </div>
 </body>
 </html>
