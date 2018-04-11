@@ -15,14 +15,14 @@
         <div class="wrapper">
             <h4>华农猪场饲料管理系统</h4>
             <ul class="left-nav">
-                <li v-bind:class="{navActive : navIndex==1 ? true : false}" @click="navIndex = 1">
-                <router-link to="/problem">问题反馈</router-link></li>
+                <li v-bind:class="{navActive : navIndex==1 ? true : false}" @click="navIndex = 1" onselectstart="return false">
+                <router-link to="/problem" >问题反馈</router-link></li>
                 <li v-bind:class="{navActive : navIndex==2 ? true : false}" @click="navIndex = 2">
-                <router-link to="/foragegain">领取饲料</router-link></li>
+                <router-link to="/foragegain" onselectstart="return false">领取饲料</router-link></li>
                 <li v-bind:class="{navActive : navIndex==3 ? true : false}" @click="navIndex = 3">
-                <router-link to="/feedtask">喂食任务</router-link></li>
+                <router-link to="/feedtask" onselectstart="return false">喂食任务</router-link></li>
                 <li v-bind:class="{navActive : navIndex==4 ? true : false}" @click="navIndex = 4">
-                <router-link to="/exit">退出系统</router-link></li>
+                <router-link to="/exit" onselectstart="return false">退出系统</router-link></li>
             </ul>
             <router-view class="router-view"></router-view>
         </div>

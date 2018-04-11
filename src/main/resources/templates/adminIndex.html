@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../static/css/reset.css" />
     <link rel="stylesheet" href="../static/css/adminIndex.css" />
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://unpkg.com/vuex"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="../static/js/templatesA.js" defer></script>
     <script src="../static/js/adminIndex.js" defer></script>  
 </head>
@@ -17,11 +17,11 @@
             <h4>华农猪场饲料管理系统</h4>
             <ul class="left-nav">
                 <li v-bind:class="{navActive : navIndex==1 ? true : false}" @click="navIndex = 1" >
-                <router-link :to="{ name: 'feedReserve' }" >饲料储量</router-link></li>
+                <router-link :to="{ name: 'feedReserve' }" >饲料属性</router-link></li>
                 <li v-bind:class="{navActive : navIndex==2 ? true : false}" @click="navIndex = 2">
-                <router-link to="/foragegain">饲料发放</router-link></li>
+                <router-link to="/feedProvice">饲料发放</router-link></li>
                 <li v-bind:class="{navActive : navIndex==3 ? true : false}" @click="navIndex = 3">
-                <router-link to="/feedtask">饲料属性</router-link></li>
+                <router-link to="/feedtask">饲料储量</router-link></li>
                 <li v-bind:class="{navActive : navIndex==4 ? true : false}" @click="navIndex = 4">
                 <router-link to="/exit">用户信息</router-link></li>
                 <li v-bind:class="{navActive : navIndex==5 ? true : false}" @click="navIndex = 5">
