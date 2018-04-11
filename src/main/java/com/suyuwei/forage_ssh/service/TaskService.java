@@ -17,7 +17,7 @@ public class TaskService {
 
     public void feedTaskSave(HttpServletRequest request) throws IOException {
         BufferedReader reader=request.getReader();
-        String input=null;
+        String input;
         StringBuffer requestBody=new StringBuffer();
         while((input = reader.readLine()) != null) {
             requestBody.append(input);

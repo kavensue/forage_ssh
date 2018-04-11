@@ -20,6 +20,17 @@ public class UsersEntity {
     @Column(name = "user_type")
     private String type;
 
+    @Column(name = "user_sex")
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public Long getId() {
         return id;
     }

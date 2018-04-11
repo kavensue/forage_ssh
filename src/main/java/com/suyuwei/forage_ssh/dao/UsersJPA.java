@@ -14,6 +14,6 @@ public interface UsersJPA extends
         JpaSpecificationExecutor<UsersEntity>,
         Serializable {
     //由用户名查找用户信息
-    @Query(value = "select * from admin where admin_name=?1",nativeQuery = true)
+    @Query(value = "select * from users where user_name=?1",nativeQuery = true)
     public UsersEntity findByName(String username);
 }
