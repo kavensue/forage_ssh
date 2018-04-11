@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8"/>
     <title>管理员主界面</title>
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/adminIndex.css" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <script src="../static/js/templatesA.js" defer></script>
+    <script src="../static/js/adminIndex.js" defer></script>  
 </head>
 <body>
-
-<h2 class="header">华农猪场饲料管理系统</h2>
-<div class="container">
-    <input type="button" value="用户管理" name="user-management" onclick="{window.location.href='/adminUserManagement.html'}"/>
-    <input type="button" value="饲料管理" name="forage-management" onclick="{window.location.href='/adminForageManagement.html'}"/>
-    <input type="button" value="饲料领取管理" name="forage-gain-management" onclick="{window.location.href='/adminForageGainManagement.html'}"/>
-    <input type="button" value="退出系统" name="exit" onclick="{window.location.href='/adminLogin.html'}"/>
-</div>
+<div id="app">
+        <div class="admin-wrapper">
+            <h4>华农猪场饲料管理系统</h4>
+            <ul class="left-nav">
+                <li v-bind:class="{navActive : navIndex==1 ? true : false}" @click="navIndex = 1" >
+                <router-link :to="{ name: 'feedReserve' }" >饲料储量</router-link></li>
+                <li v-bind:class="{navActive : navIndex==2 ? true : false}" @click="navIndex = 2">
+                <router-link to="/foragegain">饲料发放</router-link></li>
+                <li v-bind:class="{navActive : navIndex==3 ? true : false}" @click="navIndex = 3">
+                <router-link to="/feedtask">饲料属性</router-link></li>
+                <li v-bind:class="{navActive : navIndex==4 ? true : false}" @click="navIndex = 4">
+                <router-link to="/exit">用户信息</router-link></li>
+                <li v-bind:class="{navActive : navIndex==5 ? true : false}" @click="navIndex = 5">
+                <router-link to="/exit">退出系统</router-link></li>
+            </ul>
+            <router-view class="router-view"></router-view>
+        </div>
+    </div>
 </body>
-
 </html>
