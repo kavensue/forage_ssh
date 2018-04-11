@@ -308,3 +308,90 @@
   width: 160px;
   text-align: center;
 }
+.admin-wrapper #fp-container {
+  padding-left: 40px;
+}
+.admin-wrapper #fp-container .fp-head {
+  margin-bottom: 25px;
+}
+.admin-wrapper #fp-container .fp-head .fp-select {
+  width: 70px;
+  height: 25px;
+  margin-left: 20px;
+  border: 0;
+  background-color: orange;
+}
+.admin-wrapper #fp-container .fp-head .fp-select::placeholder {
+  text-align: center;
+  background-color: orange;
+  color: #FFF;
+}
+.admin-wrapper #fp-container .fp-table-wrap .i-width {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+}
+.admin-wrapper #fp-container .fp-table-wrap input.i-width {
+  width: 70px;
+  margin: 0 5px;
+  background-color: #CCC;
+  border-color: transparent;
+}
+.admin-wrapper #fp-container .fp-table-wrap .fp-table-header {
+  width: 460px;
+  border-bottom: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.admin-wrapper #fp-container .fp-table-wrap .fp-table-item {
+  width: 480px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #333;
+}
+.admin-wrapper #fp-container .fp-table-wrap .fp-table-item .fp-common-btn {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+.admin-wrapper #fp-container .fp-table-wrap .fp-table-item .fp-del-btn {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 3px;
+  background: url(../img/del.png);
+}
+.admin-wrapper #fp-container .fp-table-wrap .fp-table-item .fp-del-btn:hover {
+  opacity: .7;
+}
+.admin-wrapper #fp-container .fp-table-wrap .fp-table-item .fp-add-btn {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 3px;
+  background: url(../img/add.png);
+}
+.admin-wrapper #fp-container .fp-table-wrap .fp-table-item .fp-add-btn:hover {
+  opacity: .7;
+}
+.admin-wrapper #fp-container .fp-btns-wrap {
+  margin-top: 35px;
+  text-align: right;
+  width: 480px;
+}
+.admin-wrapper #fp-container .fp-btns-wrap button {
+  border: 0;
+  border-radius: 5px;
+  background-color: orange;
+  color: #Fff;
+  width: 80px;
+  height: 25px;
+}
+.admin-wrapper #fp-container .fp-btns-wrap button:hover {
+  color: #333;
+  opacity: .7;
+}
