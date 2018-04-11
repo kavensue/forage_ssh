@@ -3,6 +3,7 @@ package com.suyuwei.forage_ssh.service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.suyuwei.forage_ssh.dao.ForageStoreJPA;
+import com.suyuwei.forage_ssh.entity.ForageInfomationEntity;
 import com.suyuwei.forage_ssh.entity.ForageStoreEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,26 @@ public class ForageStoreService {
         return 0;
     }
 
+    //减少饲料储量，在饲料发放时用到
+    public int forageStoreProvide(HttpServletRequest request) throws IOException {
+        BufferedReader reader=request.getReader();
+        String input;
+        StringBuffer requestBody=new StringBuffer();
+        while((input = reader.readLine()) != null) {
+            requestBody.append(input);
+        }
+        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+        for(int i=0;i<jsonArray.size();i++){
+            JSONObject jsonObject=jsonArray.getJSONObject(i);
+            String type=jsonObject.getString("type");
+            Long number=jsonObject.getLong("number");
+            ForageStoreEntity forageStoreEntity=forageStoreJPA.findbytype(type);
+            forageStoreEntity.setNumber(forageStoreEntity.getNumber()-number);
+            forageStoreJPA.save(forageStoreEntity);
+        }
+        return 0;
+    }
+
     //删除饲料储量
     public int forageStoreDelete(HttpServletRequest request){
         String forageStoreId=request.getParameter("id");
@@ -55,4 +76,26 @@ public class ForageStoreService {
         return forageStoreJPA.findAll();
     }
 
+    //手动人工更新饲料储量
+    public int forageStoreUpdate(HttpServletRequest request) throws IOException {
+        BufferedReader reader=request.getReader();
+        String input;
+        StringBuffer requestBody=new StringBuffer();
+        while((input = reader.readLine()) != null) {
+            requestBody.append(input);
+        }
+        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+        JSONObject jsonObject=jsonArray.getJSONObject(0);
+        Long id=jsonObject.getLong("id");
+        String type=jsonObject.getString("type");
+        Long number=jsonObject.getLong("number");
+        String unit=jsonObject.getString("unit");
+        ForageStoreEntity forageStoreEntity=new ForageStoreEntity();
+        forageStoreEntity.setId(id);
+        forageStoreEntity.setType(type);
+        forageStoreEntity.setNumber(number);
+        forageStoreEntity.setUnit(unit);
+        forageStoreJPA.save(forageStoreEntity);
+        return 0;
+    }
 }

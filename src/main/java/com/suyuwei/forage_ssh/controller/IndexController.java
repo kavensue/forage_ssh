@@ -14,4 +14,19 @@ public class IndexController {
     public String index(){
         return "index";
     }
+
+    @RequestMapping(value = "test",method = RequestMethod.GET)
+    public String test(){
+        return "test";
+    }
+
+    @RequestMapping(value = "adminIndex",method = RequestMethod.GET)
+    public String adminIndex(){
+        return "adminIndex";
+    }
+
+    @RequestMapping(value = "login",method = RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
 }
