@@ -12,12 +12,11 @@ window.onload = function(){
     }); 
 
     const vm = new Vue({
+        el: '#app',
         router,
         data: {
             navIndex: 1
         }
-    }).$mount('#app');
-
-
+    })
 
 } 

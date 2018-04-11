@@ -60,5 +60,62 @@
                 }
             }
         }
+        .f-container{
+            h4{
+                text-align: left;
+            }
+            #form-wraper{
+                label{
+                    display: inline-block;
+                    margin-right: 20px;
+                }
+                #btn-submit{
+                    #common-btn();
+                    width: 80px;
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 1rem;
+                    margin-left: 20px;
+                    &:hover{
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+        .t-container{
+            #form-task{
+                display: flex;
+                flex-direction: column;
+                width: 500px;
+                .one-wrap,.two-wrap{
+                    span,div{
+                        display: block;
+                        margin: 10px 0;
+                    }
+                }
+                .btn-produce{
+                    #common-btn();
+                    flex: 0 1 30px;
+                    width: 200px;
+                    background-color: #333;
+                    margin-top: 15px;
+                    margin-bottom: 20px;
+                    &:hover{
+                        opacity: 0.7;
+                    }
+                }
+            }
+            #task-list{
+                button{
+                    #common-btn();
+                    width: 80px;
+                    height: 30px;
+                    margin-right: 30px;
+                    &:hover{
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
     }
 }
