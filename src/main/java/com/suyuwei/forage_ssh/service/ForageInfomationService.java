@@ -20,7 +20,7 @@ public class ForageInfomationService {
     @Autowired
     private ForageInfomationJPA forageInfomationJPA;
 
-    //添加饲料出入库信息
+    //添加饲料入库信息
     public int forageInfomationAdd(HttpServletRequest request) throws IOException {
         BufferedReader reader=request.getReader();
         String input;
@@ -64,5 +64,41 @@ public class ForageInfomationService {
     public List<ForageInfomationEntity> forageInfomationGet(){
         List<ForageInfomationEntity> forageInfomationEntityList=forageInfomationJPA.findAll();
         return forageInfomationEntityList;
+    }
+
+    //添加饲料出库信息（饲料发放）
+    public int forageProvideInfo(HttpServletRequest request) throws IOException {
+        BufferedReader reader=request.getReader();
+        String input;
+        StringBuffer requestBody=new StringBuffer();
+        while((input = reader.readLine()) != null) {
+            requestBody.append(input);
+        }
+        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+        //生成时间字符串
+        Date day=new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time=sdf.format(day);
+        //获取仓库管理员姓名
+        HttpSession session=request.getSession(false);
+        String adminName = (String) session.getAttribute("adminName");
+
+        for(int i=0;i<jsonArray.size();i++){
+            ForageInfomationEntity forageInfomationEntity=new ForageInfomationEntity();
+            JSONObject jsonObject=jsonArray.getJSONObject(i);
+            String type=jsonObject.getString("type");
+            Long number=jsonObject.getLong("number");
+            String unit=jsonObject.getString("unit");
+            String feederName=jsonObject.getString("feederName");
+
+            forageInfomationEntity.setType(type);
+            forageInfomationEntity.setNumber(number);
+            forageInfomationEntity.setUnit(unit);
+            forageInfomationEntity.setTime(time);
+            forageInfomationEntity.setAdminName(adminName);
+            forageInfomationEntity.setFeederName(feederName);
+            forageInfomationJPA.save(forageInfomationEntity);
+        }
+        return 1;
     }
 }

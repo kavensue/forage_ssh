@@ -64,7 +64,7 @@ public class AdminController {
 
 
 
-    //饲料储量和出入库信息增加、更新
+    //饲料储量和入库信息增加、更新
     @RequestMapping(value = "/forageStoreAndInfoSave",method = RequestMethod.POST)
     @ResponseBody
     public int forageStoreAndInfoSave(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -112,5 +112,15 @@ public class AdminController {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
         return forageInfomationService.forageInfomationGet();
+    }
+
+    //饲料出库信息（饲料发放）增加
+    @RequestMapping(value = "/forageProvideInfo",method = RequestMethod.GET)
+    @ResponseBody
+    public int forageProvideInfo(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html");
+        forageInfomationService.forageProvideInfo(request);
+        return 0;
     }
 }
