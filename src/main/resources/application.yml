@@ -1,6 +1,6 @@
 spring:
   thymeleaf:
-      mode: HTML5
+      mode: LEGACYHTML5
       encoding: utf-8
       cache: false
       servlet:
