@@ -9,8 +9,8 @@ const feedReserve = {
         <span class="i-width">编号</span><span class="i-width">种类</span><span class="i-width">单位</span><span class="l-width"></span>
     </div>
     <div class="table-main" v-for="item in $store.state.mainData">
-        <span  class="i-width">{{item.num}}</span><span  class="i-width">{{item.kind}}</span><span class="i-width">{{item.unit}}</span>
-        <span class="l-width"><button class="edit-btn">编辑</button><button class="del-btn">删除</button></span>
+        <span  class="i-width">{{item.id}}</span><span contenteditable class="i-width">{{item.type}}</span><span class="i-width">{{item.unit}}</span>
+        <span class="l-width"><button class="edit-btn">确定</button><button class="del-btn">删除</button></span>
     </div>
 </div>
 </div>
@@ -50,7 +50,7 @@ const feedProvice = {
     </div>
     <div class="fp-btns-wrap">
         <button class="fp-clear-btn" @click="$store.commit('clearList')">清空</button>
-        <button class="fp-submit-btn" @click="$store.commit('fpSubData')">提交</button>
+        <button class="fp-submit-btn" @click="$store.dispatch('fpSubData')">提交</button>
     </div>
 </div>
 </div>
