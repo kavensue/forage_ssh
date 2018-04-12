@@ -12,3 +12,10 @@
   border: 0;
   border-radius: 5px;
 }
+.fp-common-btn {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 3px;
+}

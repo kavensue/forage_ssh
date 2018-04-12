@@ -12,6 +12,13 @@
   border: 0;
   border-radius: 5px;
 }
+.fp-common-btn {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -349,13 +356,6 @@
   margin-bottom: 10px;
   border-bottom: 1px dotted #333;
 }
-.admin-wrapper #fp-container .fp-table-wrap .fp-table-item .fp-common-btn {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  vertical-align: middle;
-  margin-left: 3px;
-}
 .admin-wrapper #fp-container .fp-table-wrap .fp-table-item .fp-del-btn {
   display: inline-block;
   width: 32px;
@@ -394,4 +394,123 @@
 .admin-wrapper #fp-container .fp-btns-wrap button:hover {
   color: #333;
   opacity: .7;
+}
+.admin-wrapper #fs-table-wraper {
+  padding-left: 40px;
+  width: 480px;
+}
+.admin-wrapper #fs-table-wraper .fs-table-flex {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+.admin-wrapper #fs-table-wraper .fs-table-flex span {
+  flex: 1 0 20%;
+  text-align: center;
+}
+.admin-wrapper #fs-table-wraper .fs-table-head {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  border-bottom: 1px solid #333;
+}
+.admin-wrapper #fs-table-wraper .fs-table-head span {
+  flex: 1 0 20%;
+  text-align: center;
+}
+.admin-wrapper #fs-table-wraper .fs-table-contain {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  border-bottom: 1px dotted #333;
+}
+.admin-wrapper #fs-table-wraper .fs-table-contain span {
+  flex: 1 0 20%;
+  text-align: center;
+}
+.admin-wrapper #fs-table-wraper .fs-table-contain .fs-table-del {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 3px;
+  background: url(../img/del.png);
+  background-repeat: no-repeat;
+  margin-left: 30px;
+}
+.admin-wrapper #fs-table-wraper .fs-table-contain .fs-table-del:hover {
+  opacity: .7;
+}
+.admin-wrapper #fs-table-wraper .fs-add-btn {
+  text-align: right;
+}
+.admin-wrapper #fs-table-wraper .fs-add-btn button {
+  border: 0;
+  border-radius: 5px;
+  background-color: orange;
+  color: #Fff;
+  width: 60px;
+  height: 25px;
+}
+.admin-wrapper #fs-table-wraper .fs-add-btn button:hover {
+  opacity: .7;
+}
+.admin-wrapper .fs-add-window {
+  background: rgba(128, 128, 128, 0.8);
+  width: 480px;
+  padding: 50px 20px;
+  margin-left: 40px;
+  margin-top: 80px;
+  border-radius: 15px;
+}
+.admin-wrapper .fs-add-window input {
+  border: 0;
+  border-radius: 5px;
+  width: 80px;
+  height: 20px;
+  background: #CCC;
+}
+.admin-wrapper .fs-add-window button {
+  border: 0;
+  border-radius: 5px;
+  background-color: orange;
+  color: #Fff;
+  width: 40px;
+  height: 20px;
+  margin-left: 15px;
+}
+.admin-wrapper .fs-add-window button:hover {
+  opacity: .7;
+}
+.admin-wrapper .um-wrapper {
+  padding-left: 40px;
+  width: 480px;
+}
+.admin-wrapper .um-wrapper .um-table {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.admin-wrapper .um-wrapper .um-table .um-head-item {
+  flex: 0 0 15%;
+  text-align: center;
+}
+.admin-wrapper .um-wrapper .um-table .um-head-pass {
+  flex: 0 0 35%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+.admin-wrapper .um-wrapper .um-table-head {
+  border-bottom: 1px solid #333;
+}
+.admin-wrapper .um-wrapper .um-table-main {
+  border-bottom: 1px dotted #333;
 }

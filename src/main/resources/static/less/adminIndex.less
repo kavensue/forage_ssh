@@ -80,13 +80,6 @@
                 padding-bottom: 15px;
                 margin-bottom: 10px;
                 border-bottom: 1px dotted @font-color;
-                .fp-common-btn{
-                    display: inline-block;
-                    width: 32px;
-                    height: 32px;
-                    vertical-align: middle;
-                    margin-left: 3px;
-                }
                 .fp-del-btn{
                     .fp-common-btn();
                     background: url(../img/del.png);
@@ -118,4 +111,99 @@
             }
         }
     }
+    #fs-table-wraper{
+        padding-left: 40px;
+        width: 480px;
+        .fs-table-flex{
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            span{
+                flex: 1 0 20%;
+                text-align: center;
+            }
+        }
+        .fs-table-head{
+            .fs-table-flex();
+            width: 100%;
+            border-bottom: 1px solid @font-color;
+        }
+        .fs-table-contain{
+            .fs-table-flex();
+            width: 100%;
+            border-bottom: 1px dotted @font-color;
+            .fs-table-del{
+                .fp-common-btn();
+                background: url(../img/del.png);
+                background-repeat: no-repeat;
+                margin-left: 30px;
+                &:hover{
+                    opacity: .7;
+                } 
+            }
+        }
+        .fs-add-btn{
+            text-align: right;
+            button{
+                #common-btn();
+                width: 60px;
+                height: 25px;
+                &:hover{
+                    opacity: .7;
+                }
+            }
+        }
+    }
+    .fs-add-window{
+        background: rgba(128,128,128, .8);
+        width: 480px;
+        padding: 50px 20px;
+        margin-left: 40px;
+        margin-top: 80px;
+        border-radius: 15px;
+        input{
+            #common-input();
+            width: 80px;
+            height: 20px;
+            background: #CCC;
+        }
+        button{
+            #common-btn();
+            width: 40px;
+            height: 20px;
+            margin-left: 15px;
+            &:hover{
+                opacity: .7;
+            }
+        }
+    }
+    .um-wrapper{
+        padding-left: 40px;
+        width: 480px;
+        .um-table{
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            .um-head-item{
+                flex: 0 0 15%;
+                text-align: center;
+            }
+            .um-head-pass{
+                flex: 0 0 35%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap; 
+                text-align: center;
+            }
+        }
+        .um-table-head{
+            border-bottom: 1px solid @font-color;
+        }
+        .um-table-main{
+            border-bottom: 1px dotted @font-color;
+        }
+    }
+
 }
