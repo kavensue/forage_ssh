@@ -4,6 +4,7 @@ import com.suyuwei.forage_ssh.entity.UsersEntity;
 import com.suyuwei.forage_ssh.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,7 +36,6 @@ public class UsersController {
 //
 //    @RequestMapping(value = "/adminForageGainManagement",method = RequestMethod.GET)
 //    public String adminForageGainManagement(){return "adminForageGainManagement";}
-
     /**
      * 进行账户密码验证
      * @param request
@@ -43,7 +43,8 @@ public class UsersController {
      */
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
-    public int doLogin(HttpServletRequest request) {
+    public int doLogin(HttpServletRequest request,HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin","*");
         int loginStatus = usersService.loginJudgement(request);
         return loginStatus;
     }
@@ -51,7 +52,8 @@ public class UsersController {
     //用户添加
     @RequestMapping(value = "/userAdd",method = RequestMethod.POST)
     @ResponseBody
-    public int userAdd(HttpServletRequest request) throws IOException {
+    public int userAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Origin","*");
         int addStatus=usersService.userAdd(request);
         return addStatus;
     }
@@ -59,7 +61,8 @@ public class UsersController {
     //用户删除
     @RequestMapping(value = "/userDelete",method = RequestMethod.POST)
     @ResponseBody
-    public int userDelete(HttpServletRequest request) throws IOException {
+    public int userDelete(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Origin","*");
         int deleteStatus=usersService.userDelete(request);
         return deleteStatus;
     }
@@ -70,13 +73,15 @@ public class UsersController {
     public List<UsersEntity> userGet(HttpServletRequest request, HttpServletResponse response) {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return usersService.userGet(request);
     }
 
     //用户更新
     @RequestMapping(value = "/userUpdate",method = RequestMethod.POST)
     @ResponseBody
-    public int userUpdate(HttpServletRequest request) throws IOException {
+    public int userUpdate(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Origin","*");
         int updateStatus=usersService.userUpdate(request);
         return updateStatus;
     }
