@@ -44,6 +44,8 @@ public class UsersController {
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
     public int doLogin(HttpServletRequest request,HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html");
         response.setHeader("Access-Control-Allow-Origin","*");
         int loginStatus = usersService.loginJudgement(request);
         return loginStatus;

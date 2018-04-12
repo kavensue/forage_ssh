@@ -1,6 +1,8 @@
 package com.suyuwei.forage_ssh.controller;
 
+import com.suyuwei.forage_ssh.entity.FeederForageGainEntity;
 import com.suyuwei.forage_ssh.entity.FeederProblemEntity;
+import com.suyuwei.forage_ssh.service.FeederForageGainService;
 import com.suyuwei.forage_ssh.service.FeederProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import java.util.List;
 public class FeederController {
     @Autowired
     private FeederProblemService feederProblemService;
+    @Autowired
+    private FeederForageGainService feederForageGainService;
 
     //添加喂饲人员的反馈问题
     @RequestMapping(value = "/feederProblemAdd",method = RequestMethod.POST)
@@ -37,5 +41,26 @@ public class FeederController {
         response.setContentType("text/html");
         response.setHeader("Access-Control-Allow-Origin","*");
         return feederProblemService.feederProblemGet();
+    }
+
+    //添加饲养员领取饲料记录
+    @RequestMapping(value = "/feederForageGainAdd",method = RequestMethod.POST)
+    @ResponseBody
+    public int feederForageGainAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
+        feederForageGainService.feederForageGainAdd(request);
+        return 0;
+    }
+
+    //获取饲养员所有领取饲料记录
+    @RequestMapping(value = "/feederForageGainGet",method = RequestMethod.GET)
+    @ResponseBody
+    public List<FeederForageGainEntity> feederForageGainGet(HttpServletResponse response){
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
+        return feederForageGainService.feederForageGainGet();
     }
 }
