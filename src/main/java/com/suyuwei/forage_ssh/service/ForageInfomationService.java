@@ -84,6 +84,7 @@ public class ForageInfomationService {
         }
         String requestString=requestBody.toString();
 
+        //饲料储量更新
         forageStoreService.forageStoreProvide(requestString);
 
         JSONArray jsonArray=JSONArray.parseArray(requestString);
