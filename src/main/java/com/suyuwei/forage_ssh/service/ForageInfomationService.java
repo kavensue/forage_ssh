@@ -19,6 +19,8 @@ import java.util.List;
 public class ForageInfomationService {
     @Autowired
     private ForageInfomationJPA forageInfomationJPA;
+    @Autowired
+    private ForageStoreService forageStoreService;
 
     //添加饲料入库信息
     public int forageInfomationAdd(HttpServletRequest request) throws IOException {
@@ -28,7 +30,12 @@ public class ForageInfomationService {
         while((input = reader.readLine()) != null) {
             requestBody.append(input);
         }
-        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+        String requestString=requestBody.toString();
+
+        //饲料储量更新
+        forageStoreService.forageStoreSave(requestString);
+
+        JSONArray jsonArray=JSONArray.parseArray(requestString);
         JSONObject jsonObject=jsonArray.getJSONObject(0);
         String type=jsonObject.getString("type");
         Long number=jsonObject.getLong("number");
@@ -39,7 +46,8 @@ public class ForageInfomationService {
         String time=sdf.format(day);
         //获取仓库管理员姓名
         HttpSession session=request.getSession(false);
-        String adminName = (String) session.getAttribute("adminName");
+        //String adminName = (String) session.getAttribute("adminName");
+        String adminName="root";
 
         ForageInfomationEntity forageInfomationEntity=new ForageInfomationEntity();
         forageInfomationEntity.setType(type);
@@ -74,14 +82,19 @@ public class ForageInfomationService {
         while((input = reader.readLine()) != null) {
             requestBody.append(input);
         }
-        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+        String requestString=requestBody.toString();
+
+        forageStoreService.forageStoreProvide(requestString);
+
+        JSONArray jsonArray=JSONArray.parseArray(requestString);
         //生成时间字符串
         Date day=new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time=sdf.format(day);
         //获取仓库管理员姓名
         HttpSession session=request.getSession(false);
-        String adminName = (String) session.getAttribute("adminName");
+        //String adminName = (String) session.getAttribute("adminName");
+        String adminName="admin";
 
         for(int i=0;i<jsonArray.size();i++){
             ForageInfomationEntity forageInfomationEntity=new ForageInfomationEntity();
@@ -99,6 +112,6 @@ public class ForageInfomationService {
             forageInfomationEntity.setFeederName(feederName);
             forageInfomationJPA.save(forageInfomationEntity);
         }
-        return 1;
+        return 0;
     }
 }

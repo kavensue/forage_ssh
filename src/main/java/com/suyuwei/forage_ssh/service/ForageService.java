@@ -80,16 +80,8 @@ public class ForageService {
 
     //饲料属性删除
     public int forageListDelete(HttpServletRequest request) throws IOException {
-        BufferedReader reader=request.getReader();
-        String input;
-        StringBuffer requestBody=new StringBuffer();
-        while((input = reader.readLine()) != null) {
-            requestBody.append(input);
-        }
-        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
-        JSONObject jsonObject=jsonArray.getJSONObject(0);
-        Long id=jsonObject.getLong("id");
-
+        String forageId=request.getParameter("id");
+        Long id=Long.valueOf(forageId);
         forageJPA.delete(id);
         return 0;
     }
