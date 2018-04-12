@@ -32,6 +32,7 @@ public class AdminController {
     public int forageAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageService.forageListAdd(request);
     }
 
@@ -41,6 +42,7 @@ public class AdminController {
     public int forageDelete(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageService.forageListDelete(request);
     }
 
@@ -50,6 +52,7 @@ public class AdminController {
     public List<ForageEntity> forageGet(HttpServletRequest request, HttpServletResponse response){
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageService.forageListGet(request);
     }
 
@@ -59,6 +62,7 @@ public class AdminController {
     public int forageUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageService.forageListUpdate(request);
     }
 
@@ -70,6 +74,7 @@ public class AdminController {
     public int forageStoreAndInfoSave(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageInfomationService.forageInfomationAdd(request);
     }
 
@@ -79,6 +84,7 @@ public class AdminController {
     public int forageStoreDelete(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageStoreService.forageStoreDelete(request);
     }
 
@@ -88,6 +94,7 @@ public class AdminController {
     public List<ForageStoreEntity> forageStoreGet(HttpServletResponse response){
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageStoreService.forageStoreGet();
     }
 
@@ -97,6 +104,7 @@ public class AdminController {
     public int forageStoreUpdate(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageStoreService.forageStoreUpdate(request);
     }
 
@@ -106,6 +114,7 @@ public class AdminController {
     public int forageInfomationDelete(HttpServletRequest request,HttpServletResponse response){
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageInfomationService.forageInfomationDelete(request);
     }
 
@@ -115,6 +124,7 @@ public class AdminController {
     public List<ForageInfomationEntity> forageInfomationGet(HttpServletResponse response){
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageInfomationService.forageInfomationGet();
     }
 
@@ -124,6 +134,7 @@ public class AdminController {
     public int forageProvideInfo(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
         return forageInfomationService.forageProvideInfo(request);
     }
 }
