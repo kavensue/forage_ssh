@@ -36,7 +36,7 @@ const store = new Vuex.Store({
         },
         proviceWho: ["张三", "李四", "赵武"],
          //添加界面
-        fs_show: true,
+        fs_show: false,
         fp_data: {    //饲料发放页面数据
             name: '',
             lists: [
@@ -70,10 +70,38 @@ const store = new Vuex.Store({
         addList: state => state.fp_data.lists.push( { kind: '', num: '', unit: ''} ),
         clearList: state => state.fp_data.lists.splice(1),
         showFsAdd: state => state.fs_show = true,
-        hideFsAdd: state => state.fs_show = false,
-        fpSubData: state => state.fp_data.lists.forEach( (item) => console.log(item.kind) )
+        hideFsAdd: state => state.fs_show = false
     },
     actions: {
+        //发放页面提交
+        fpSubData: function(content){
+            let name = content.state.fp_data.name;
+            let list = content.state.fp_data.lists;
+            let arr = [];
+            let _content = content;
+            for(let i=0; i<list.length; i++){
+                arr.push({
+                    feederName: name,
+                    type: list[i].kind,
+                    unit: list[i].unit,
+                    number: list[i].num
+                })
+            }
+            axios({ 
+                method: 'post', 
+                url: 'http://dd7b5591.ngrok.io/forageProvideInfo', 
+                data: arr
+            })
+            .then(function(response){
+                if(response.data === 0){
+                    window.alert('提交成功!');
+                }else{
+                    window.alert('输入数据有误')
+                }
+            }).catch((err)=>{
+                console.log(err);
+            })
+        },
         fsDetermine: content => console.log(content.state.fs_data.addData),
         fsDelStoreItem: (content, index) => content.state.feedStores.splice(index, 1)
     }
@@ -84,6 +112,14 @@ var vm = new Vue({
     store,
     data: {
         navIndex: 1
+    },
+    //初始化,请求饲料属性页面数据
+    beforeCreate(){
+        let that = this;
+        axios.get('http://dd7b5591.ngrok.io/forageGet')
+            .then( function(response){
+                that.$store.state.mainData = response.data;
+            } )
     }
 }).$mount('#app')
 

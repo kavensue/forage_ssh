@@ -8,8 +8,8 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-    <script src="../static/js/templatesA.js" defer></script>
-    <script src="../static/js/adminIndex.js" defer></script>  
+    <script src="../static/js/templatesA.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div id="app">
@@ -21,14 +21,16 @@
                 <li v-bind:class="{navActive : navIndex==2 ? true : false}" @click="navIndex = 2">
                 <router-link to="/feedProvice">饲料发放</router-link></li>
                 <li v-bind:class="{navActive : navIndex==3 ? true : false}" @click="navIndex = 3">
-                <router-link to="/feedtask">饲料储量</router-link></li>
+                <router-link to="/feedStore">饲料储量</router-link></li>
                 <li v-bind:class="{navActive : navIndex==4 ? true : false}" @click="navIndex = 4">
-                <router-link to="/exit">用户信息</router-link></li>
+                <router-link to="/userMes">用户信息</router-link></li>
                 <li v-bind:class="{navActive : navIndex==5 ? true : false}" @click="navIndex = 5">
                 <router-link to="/exit">退出系统</router-link></li>
             </ul>
             <router-view class="router-view"></router-view>
         </div>
     </div>
+
+<script src="../static/js/adminIndex.js"></script> 
 </body>
 </html>

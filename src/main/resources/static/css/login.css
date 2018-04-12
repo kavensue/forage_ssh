@@ -8,7 +8,7 @@ html, body, .container{margin:0;padding:0;height: 100%;font-size: 18px;color: #3
     background: url(../img/bg.jpg);
     background-size: 100% 100%;
 }
-form{
+div.login{
     border: 1px solid #666;
     padding: 40px 60px;
     border-radius: 10px;
