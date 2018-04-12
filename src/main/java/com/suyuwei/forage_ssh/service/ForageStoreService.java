@@ -19,14 +19,8 @@ public class ForageStoreService {
     private ForageStoreJPA forageStoreJPA;
 
     //添加、更新饲料储量
-    public int forageStoreSave(HttpServletRequest request) throws IOException {
-        BufferedReader reader=request.getReader();
-        String input;
-        StringBuffer requestBody=new StringBuffer();
-        while((input = reader.readLine()) != null) {
-            requestBody.append(input);
-        }
-        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+    public int forageStoreSave(String requestString) throws IOException {
+        JSONArray jsonArray=JSONArray.parseArray(requestString);
         JSONObject jsonObject=jsonArray.getJSONObject(0);
         String type=jsonObject.getString("type");
         Long number=jsonObject.getLong("number");
@@ -44,14 +38,8 @@ public class ForageStoreService {
     }
 
     //减少饲料储量，在饲料发放时用到
-    public int forageStoreProvide(HttpServletRequest request) throws IOException {
-        BufferedReader reader=request.getReader();
-        String input;
-        StringBuffer requestBody=new StringBuffer();
-        while((input = reader.readLine()) != null) {
-            requestBody.append(input);
-        }
-        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+    public int forageStoreProvide(String requestString) throws IOException {
+        JSONArray jsonArray=JSONArray.parseArray(requestString);
         for(int i=0;i<jsonArray.size();i++){
             JSONObject jsonObject=jsonArray.getJSONObject(i);
             String type=jsonObject.getString("type");

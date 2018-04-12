@@ -70,12 +70,7 @@ public class AdminController {
     public int forageStoreAndInfoSave(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
-        int forageInfoStatus=forageInfomationService.forageInfomationAdd(request);
-        int forageStoreStatus=forageStoreService.forageStoreSave(request);
-        if(forageInfoStatus==0&&forageStoreStatus==0)
-            return 0;//成功
-        else
-            return 1;//失败
+        return forageInfomationService.forageInfomationAdd(request);
     }
 
     //饲料储量删除
@@ -97,7 +92,7 @@ public class AdminController {
     }
 
     //饲料储量更新，人工的
-    @RequestMapping(value = "/forageStoreUpdate",method = RequestMethod.GET)
+    @RequestMapping(value = "/forageStoreUpdate",method = RequestMethod.POST)
     @ResponseBody
     public int forageStoreUpdate(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
@@ -124,17 +119,11 @@ public class AdminController {
     }
 
     //饲料出库信息（饲料发放）增加
-    @RequestMapping(value = "/forageProvideInfo",method = RequestMethod.GET)
+    @RequestMapping(value = "/forageProvideInfo",method = RequestMethod.POST)
     @ResponseBody
     public int forageProvideInfo(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
-        forageInfomationService.forageProvideInfo(request);
-        int forageInfoStatus=forageInfomationService.forageProvideInfo(request);
-        int forageStoreStatus=forageStoreService.forageStoreProvide(request);
-        if(forageInfoStatus==0&&forageStoreStatus==0)
-            return 0;//成功
-        else
-            return 1;//失败
+        return forageInfomationService.forageProvideInfo(request);
     }
 }
