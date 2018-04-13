@@ -6,7 +6,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'post',
-            url: 'http://dd7b5591.ngrok.io/doLogin',
+            url: URL + '/doLogin',
             data: {
                 username: _name,
                 password: _pass

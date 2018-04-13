@@ -25,7 +25,7 @@ const feedProvice = {
         <label for="select-p">发放给</label>
         <input type="text" class="fp-select feeder-input" v-model="$store.state.fp_data.name" placeholder="选择" list="select-lists"/>
         <datalist id="select-lists">
-            <option v-for="item in $store.state.proviceWho" :value="item" />
+            <option v-for="item in $store.state.proviceWho" :value="item.name" />
         </datalist>
     </div>
     <div class="fp-table-wrap">
@@ -35,14 +35,14 @@ const feedProvice = {
         </div>
         <div class="fp-table-item" v-for="item,index in $store.state.fp_data.lists">
             <span class="i-width">{{ index+1 }}</span>
-            <input type="text" class="i-width k-input" list="kind-list" v-model="item.kind"/>
+            <input type="text" class="i-width k-input" list="kind-list" v-model="item.kind" />
             <datalist id="kind-list">
                 <option v-for="item in $store.state.feedProvice.kind" :value="item" />
             </datalist>
             <input type="text" class="i-width n-input" v-model="item.num" />
             <input type="text" class="i-width u-input" list="unit-kinds" v-model="item.unit" />
             <datalist id="unit-kinds">
-                <option v-for="item in $store.state.feedProvice.unit" :value="item" />
+                <option v-for="item in $store.state.feedProvice.unit[1]" :value="item" />
             </datalist>
             <i class="fp-del-btn" @click="$store.commit('delList', item)"></i>
             <i class="fp-add-btn" @click="$store.commit('addList')"></i>
@@ -70,8 +70,8 @@ const feedStore = {
         </div>
         <div class="fs-table-contain" v-for="(item,index) in $store.state.feedStores">
             <span class="fs-table-item">{{ index+1 }}</span>
-            <span class="fs-table-item">{{ item.kind }}</span>
-            <span class="fs-table-item">{{ item.num }}</span>
+            <span class="fs-table-item">{{ item.type }}</span>
+            <span class="fs-table-item">{{ item.number }}</span>
             <span class="fs-table-item">{{ item.unit }}</span>
             <span class="fs-table-del" @click="$store.dispatch('fsDelStoreItem', index)"></span>
         </div>
