@@ -322,9 +322,10 @@
   margin-bottom: 25px;
 }
 .admin-wrapper #fp-container .fp-head .fp-select {
-  width: 70px;
-  height: 25px;
+  width: 100px;
+  height: 30px;
   margin-left: 20px;
+  text-indent: 10px;
   border: 0;
   background-color: orange;
 }
