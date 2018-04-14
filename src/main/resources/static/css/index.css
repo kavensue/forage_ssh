@@ -8,6 +8,12 @@
   background-color: orange;
   color: #Fff;
 }
+#footer-btn {
+  display: block;
+  float: right;
+  width: 60px;
+  height: 25px;
+}
 #common-input {
   border: 0;
   border-radius: 5px;

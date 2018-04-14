@@ -8,10 +8,24 @@ const feedReserve = {
     <div class="table-header">
         <span class="i-width">编号</span><span class="i-width">种类</span><span class="i-width">单位</span><span class="l-width"></span>
     </div>
-    <div class="table-main" v-for="item in $store.state.mainData">
-        <span  class="i-width">{{item.id}}</span><span contenteditable class="i-width">{{item.type}}</span><span class="i-width">{{item.unit}}</span>
-        <span class="l-width"><button class="edit-btn">确定</button><button class="del-btn">删除</button></span>
+    <div class="table-main" v-for="(item, index) in $store.state.mainData">
+        <span  class="i-width">{{ index+1 }}</span><span class="i-width">{{item.type}}</span><span class="i-width">{{item.unit}}</span>
+        <span class="l-width"><button class="edit-btn" @click="$store.commit('showFrEdit', {id:item.id, index})">编辑</button><button class="del-btn" @click="$store.dispatch('frDelStoreItem', {id:item.id, index})">删除</button></span>
     </div>
+    <button class="fr-foot-add" @click="$store.commit('showFrAdd')">添加</button>
+</div>
+<div class="fr-add-window" v-if="$store.state.fr_show">
+    <input type="text" placeholder="种类" v-model="$store.state.fr_data.addData.kind" />
+    <input type="text" placeholder="单位" v-model="$store.state.fr_data.addData.unit" />
+    <button @click="$store.commit('hideFrAdd')">取消</button>
+    <button @click="$store.dispatch('frDetermine')">确定</button>
+</div>
+
+<div class="fr-add-window" v-if="$store.state.frEdit_show">
+    <input type="text" placeholder="种类"  v-model="$store.state.fr_data.addData.kind" />
+    <input type="text" placeholder="单位" v-model="$store.state.fr_data.addData.unit" />
+    <button @click="$store.commit('hideFrEdit')">取消</button>
+    <button @click="$store.dispatch('frUpStoreItem')">确定</button>
 </div>
 </div>
 `}
@@ -71,9 +85,10 @@ const feedStore = {
         <div class="fs-table-contain" v-for="(item,index) in $store.state.feedStores">
             <span class="fs-table-item">{{ index+1 }}</span>
             <span class="fs-table-item">{{ item.type }}</span>
-            <span class="fs-table-item">{{ item.number }}</span>
+            <span class="fs-table-item" contenteditable>{{ item.number }}</span>
             <span class="fs-table-item">{{ item.unit }}</span>
-            <span class="fs-table-del" @click="$store.dispatch('fsDelStoreItem', index)"></span>
+            <span class="fs-table-del" @click="$store.dispatch('fsDelStoreItem', {id:item.id, index})"></span>
+            <span class="fs-table-del fs-table-edit" @click="$store.commit('showFsEdit', {id:item.id, index})"></span>
         </div>
         <div class="fs-add-btn">
             <button @click="$store.commit('showFsAdd')">添加</button>
@@ -87,10 +102,18 @@ const feedStore = {
         <input type="text" id="fs-input-num" v-model="$store.state.fs_data.addData._num" />
         <input type="text" list="fs-unit-lists" id="fs-input-unit" v-model="$store.state.fs_data.addData._unit" />
             <datalist id="fs-unit-lists">
-                <option v-for="item in $store.state.feedProvice.unit" :value="item" />
+                <option v-for="item in $store.state.feedProvice.unit[1]" :value="item" />
             </datalist>
         <button @click="$store.commit('hideFsAdd')">取消</button>
         <button class="fs-add-sure" @click="$store.dispatch('fsDetermine')" >确定</button>
+    </div>
+    <div class="fs-add-window" v-if="$store.state.fsEdit_show">
+        <input type="text" readonly id="fs-input-kind" v-model="$store.state.fs_data.addData._kind"/>
+        <input type="text" id="fs-input-num" v-model="$store.state.fs_data.addData._num" />
+        <input type="text" readonly id="fs-input-unit" v-model="$store.state.fs_data.addData._unit" />
+
+        <button @click="$store.commit('hideFsEdit')">取消</button>
+        <button class="fs-add-sure" @click="$store.dispatch('fsUpStoreItem')" >确定</button>
     </div>
 </div>
 `}
@@ -105,6 +128,7 @@ const userMes = {
             <span class="um-head-item">性别</span>
             <span class="um-head-item">身份</span>
             <span class="um-head-pass">密码</span>
+            <span class="um-head-operation">操作</span>
         </div>
         <div class="um-table-main um-table" v-for="( item,index ) in $store.state.um_data.um_users">
             <span class="um-head-item">{{ index+1 }}</span>
@@ -112,7 +136,28 @@ const userMes = {
             <span class="um-head-item">{{ item.sex }}</span>
             <span class="um-head-item">{{ item.usr }}</span>
             <span class="um-head-pass">{{ item.pass }}</span>
+            <span class="um-head-operation">
+                <span class="um-del-btn" @click="$store.dispatch('umDelStoreItem', {id:item.id, index})"></span>
+                <span class="um-del-edit" @click="$store.commit('showUmEdit', {id:item.id, index})"></span>
+            </span>
         </div>
+        <button class="um-foot-add-btn" @click="$store.commit('showUmAdd')">添加</button>
+    </div>
+    <div class="um-add-window" v-if="$store.state.um_show">
+        <input type="text" class="um-add-window-item" placeholder="姓名" v-model="$store.state.um_data.addData.name" />
+        <input type="text" class="um-add-window-item" placeholder="性别" v-model="$store.state.um_data.addData.sex" />
+        <input type="text" class="um-add-window-item" placeholder="身份" v-model="$store.state.um_data.addData.urs" />
+        <input type="text" class="um-add-window-item" placeholder="密码" v-model="$store.state.um_data.addData.pass" />
+        <button class="um-add-window-btn" @click="$store.commit('hideUmAdd')">取消</button>
+        <button class="um-add-window-btn" @click="$store.dispatch('umDetermine')">确定</button>
+    </div>
+    <div class="um-add-window" v-if="$store.state.umEdit_show">
+        <input type="text" class="um-add-window-item" placeholder="姓名" v-model="$store.state.um_data.addData.name"/>
+        <input type="text" class="um-add-window-item" placeholder="性别" v-model="$store.state.um_data.addData.sex"/>
+        <input type="text" class="um-add-window-item" placeholder="身份" v-model="$store.state.um_data.addData.type"/>
+        <input type="text" class="um-add-window-item" placeholder="密码" v-model="$store.state.um_data.addData.password"/>
+        <button class="um-add-window-btn" @click="$store.commit('hideUmEdit')">取消</button>
+        <button class="um-add-window-btn" @click="$store.dispatch('frUpStoreItem')">确定</button>
     </div>
 </div>
 `}
