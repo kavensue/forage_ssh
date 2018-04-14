@@ -18,10 +18,10 @@ $(document).ready(function(){
                         window.confirm('没有此用户');
                         break;
                     case 1:
-                        location.href = "http://dd7b5591.ngrok.io/index";
+                        location.href = URL + "/index";
                         break;
                     case 2:
-                        location.href = "http://dd7b5591.ngrok.io/adminIndex";
+                        location.href =  URL + "/adminIndex";
                         break;
                     case 3:
                         window.confirm('用户密码错误');
