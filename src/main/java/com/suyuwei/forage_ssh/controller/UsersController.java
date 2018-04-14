@@ -61,7 +61,7 @@ public class UsersController {
     }
 
     //用户删除
-    @RequestMapping(value = "/userDelete",method = RequestMethod.POST)
+    @RequestMapping(value = "/userDelete",method = RequestMethod.GET)
     @ResponseBody
     public int userDelete(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setHeader("Access-Control-Allow-Origin","*");

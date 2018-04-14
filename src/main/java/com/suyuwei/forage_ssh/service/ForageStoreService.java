@@ -37,10 +37,12 @@ public class ForageStoreService {
             forageStoreEntity.setTime(time);
             forageStoreJPA.save(forageStoreEntity);
         }else{
+            forageStoreEntity=new ForageStoreEntity();
             forageStoreEntity.setType(type);
             forageStoreEntity.setNumber(number);
             forageStoreEntity.setUnit(unit);
             forageStoreEntity.setTime(time);
+            forageStoreJPA.save(forageStoreEntity);
         }
         return 0;
     }
@@ -52,15 +54,25 @@ public class ForageStoreService {
             JSONObject jsonObject=jsonArray.getJSONObject(i);
             String type=jsonObject.getString("type");
             Long number=jsonObject.getLong("number");
+            String unit=jsonObject.getString("unit");
             //生成时间字符串
             Date day=new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String time=sdf.format(day);
 
             ForageStoreEntity forageStoreEntity=forageStoreJPA.findbytype(type);
-            forageStoreEntity.setNumber(forageStoreEntity.getNumber()-number);
-            forageStoreEntity.setTime(time);
-            forageStoreJPA.save(forageStoreEntity);
+            if(forageStoreEntity!=null){
+                forageStoreEntity.setNumber(forageStoreEntity.getNumber()-number);
+                forageStoreEntity.setTime(time);
+                forageStoreJPA.save(forageStoreEntity);
+            }else{
+                forageStoreEntity=new ForageStoreEntity();
+                forageStoreEntity.setType(type);
+                forageStoreEntity.setNumber(number);
+                forageStoreEntity.setUnit(unit);
+                forageStoreEntity.setTime(time);
+                forageStoreJPA.save(forageStoreEntity);
+            }
         }
         return 0;
     }

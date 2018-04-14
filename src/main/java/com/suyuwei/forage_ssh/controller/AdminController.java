@@ -37,7 +37,7 @@ public class AdminController {
     }
 
     //饲料属性删除
-    @RequestMapping(value = "/forageDelete",method = RequestMethod.POST)
+    @RequestMapping(value = "/forageDelete",method = RequestMethod.GET)
     @ResponseBody
     public int forageDelete(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
@@ -79,7 +79,7 @@ public class AdminController {
     }
 
     //饲料储量删除
-    @RequestMapping(value = "/forageStoreDelete",method = RequestMethod.POST)
+    @RequestMapping(value = "/forageStoreDelete",method = RequestMethod.GET)
     @ResponseBody
     public int forageStoreDelete(HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
@@ -109,7 +109,7 @@ public class AdminController {
     }
 
     //饲料出入库信息删除
-    @RequestMapping(value = "/forageInfomationDelete",method = RequestMethod.POST)
+    @RequestMapping(value = "/forageInfomationDelete",method = RequestMethod.GET)
     @ResponseBody
     public int forageInfomationDelete(HttpServletRequest request,HttpServletResponse response){
         response.setCharacterEncoding("utf-8");
