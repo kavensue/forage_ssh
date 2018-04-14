@@ -146,7 +146,7 @@ const userMes = {
     <div class="um-add-window" v-if="$store.state.um_show">
         <input type="text" class="um-add-window-item" placeholder="姓名" v-model="$store.state.um_data.addData.name" />
         <input type="text" class="um-add-window-item" placeholder="性别" v-model="$store.state.um_data.addData.sex" />
-        <input type="text" class="um-add-window-item" placeholder="身份" v-model="$store.state.um_data.addData.urs" />
+        <input type="text" class="um-add-window-item" placeholder="身份" v-model="$store.state.um_data.addData.usr" />
         <input type="text" class="um-add-window-item" placeholder="密码" v-model="$store.state.um_data.addData.pass" />
         <button class="um-add-window-btn" @click="$store.commit('hideUmAdd')">取消</button>
         <button class="um-add-window-btn" @click="$store.dispatch('umDetermine')">确定</button>
@@ -157,7 +157,7 @@ const userMes = {
         <input type="text" class="um-add-window-item" placeholder="身份" v-model="$store.state.um_data.addData.type"/>
         <input type="text" class="um-add-window-item" placeholder="密码" v-model="$store.state.um_data.addData.password"/>
         <button class="um-add-window-btn" @click="$store.commit('hideUmEdit')">取消</button>
-        <button class="um-add-window-btn" @click="$store.dispatch('frUpStoreItem')">确定</button>
+        <button class="um-add-window-btn" @click="$store.dispatch('umUpStoreItem')">确定</button>
     </div>
 </div>
 `}
