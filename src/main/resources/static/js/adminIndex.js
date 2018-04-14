@@ -48,7 +48,7 @@ const store = new Vuex.Store({
         //用户信息
         um_data: {
             um_users: [ {name: '', sex: '', usr: '', pass: '', id: ''} ],
-            addData: {} 
+            addData: {name: '', sex: '', usr: '', pass: '', id: ''} 
         }
     },
     mutations: {
@@ -91,22 +91,24 @@ const store = new Vuex.Store({
             state.fs_data.addData.id = obj.id;
             state.fs_data.addData.index = _index;
         },
-        hideFsEdit: state => {
-            state.fsEdit_show = false;
-            state.fs_data.addData._kind = '';
-            state.fs_data.addData._num = '';
-            state.fs_data.addData._unit = '';
-            state.fs_data.addData.id = '';
-            state.fs_data.addData.index = '';
-        },
+        hideFsEdit: state => state.fsEdit_show = false,
         //showUmAdd, hideUmAdd 用户信息页面的添加界面显示或者隐藏
         showUmAdd: state => state.um_show = true,
-        hideUmAdd: state => state.um_show = false,
+        hideUmAdd: state => {
+            state.um_show = false;
+
+            state.um_data.addData.name = '';
+            state.um_data.addData.sex = '';
+            state.um_data.addData.usr = '';
+            state.um_data.addData.pass = ''; 
+            state.um_data.addData.id = '';
+            state.um_data.addData.index = '';
+        },
         //showUmEdit, hideFsEdit 用户信息页面的编辑界面显示或者隐藏
         showUmEdit: (state, obj) => {
             state.umEdit_show = true;
             let _index = obj.index;
-            console.log(obj);
+
             //填充要编辑的数据      
             state.um_data.addData.name = state.um_data.um_users[_index].name;
             state.um_data.addData.sex = state.um_data.um_users[_index].sex;
@@ -117,6 +119,7 @@ const store = new Vuex.Store({
         },
         hideUmEdit: state => {
             state.umEdit_show = false;
+
             state.um_data.addData.name = '';
             state.um_data.addData.sex = '';
             state.um_data.addData.type = '';
@@ -267,6 +270,7 @@ const store = new Vuex.Store({
                     if( response.data == 0 ){
                         content.state.mainData.splice( obj.index, 1 );
                         alert('删除成功')
+                        content.dispatch('frGetData');
                     }else{
                         alert('未知错误')
                     }
@@ -275,7 +279,6 @@ const store = new Vuex.Store({
         //饲料属性页面 -- 修改
         frUpStoreItem: (content) => {
             let _data = content.state.fr_data.addData;
-
             axios.post(`${URL}/forageUpdate`, [{
                 id: _data.id,
                 type: _data.kind,
@@ -285,7 +288,6 @@ const store = new Vuex.Store({
                     alert('恭喜你,修改成功!');
                     //隐藏界面, 重置fs_data.addData
                     content.commit('hideFrEdit');
-
                     //刷新页面
                     content.dispatch('frGetData');
                 }
@@ -304,7 +306,7 @@ const store = new Vuex.Store({
                                 _uArr.push( {name: '', sex: '', usr: '', pass: '', id: ''} );
                             _uArr[i].name = response.data[i].name;
                             _uArr[i].sex = response.data[i].sex;
-                            _uArr[i].usr = response.data[i].name;
+                            _uArr[i].usr = response.data[i].type;
                             _uArr[i].pass = response.data[i].password;
                             _uArr[i].id = response.data[i].id;
                         }
@@ -316,13 +318,14 @@ const store = new Vuex.Store({
             let _data = {};
             _data.name = content.state.um_data.addData.name;
             _data.sex = content.state.um_data.addData.sex;
-            _data.type = content.state.um_data.addData.urs;
+            _data.type = content.state.um_data.addData.usr;
             _data.password = content.state.um_data.addData.pass;
-            
+
             axios.post(`${URL}/userAdd`, [_data])
                 .then( (response)=>{
                     if(response.data == 0){
                         content.commit('hideUmAdd');
+                        content.dispatch('setProvice');
                         alert('操作成功!')
                     }else{
                         alert('抱歉, 有错误发生!')
@@ -342,6 +345,7 @@ const store = new Vuex.Store({
                     if( response.data == 0 ){
                         content.state.um_data.um_users.splice( obj.index, 1 );
                         alert('删除成功')
+                        content.dispatch('setProvice');
                     }else{
                         alert('未知错误')
                     }
@@ -349,7 +353,7 @@ const store = new Vuex.Store({
             }else{}           
         },
         //用户信息页面 -- 修改
-        frUpStoreItem: (content) => {
+        umUpStoreItem: (content) => {
             let _data = content.state.um_data.addData;
 
             axios.post(`${URL}/userUpdate`, [ _data ] )
@@ -359,6 +363,18 @@ const store = new Vuex.Store({
                     content.commit('hideUmEdit');
                     //刷新页面
                     content.dispatch('umGetData');
+                    content.dispatch('setProvice');
+                }
+            } )
+        },
+        //设置发放人员
+        setProvice: (content)=>{
+            axios.get(URL + '/userGet')
+            .then( (response)=>{
+                if(response.status != 200){
+                    alert('抱歉, 出错了!')
+                }else{
+                    content.state.proviceWho = response.data.filter((item)=>item.type.length === 4 ? item.name : '');
                 }
             } )
         }
@@ -392,18 +408,9 @@ var vm = new Vue({
     //初始化,请求饲料属性页面数据
     beforeCreate(){
         let that = this;
-        let _usersURL = URL + '/userGet';
 
         this.$store.dispatch('frGetData');
-        //设置发放人员
-        axios.get(_usersURL)
-            .then( (response)=>{
-                if(response.status != 200){
-                    alert('抱歉, 出错了!')
-                }else{
-                    that.$store.state.proviceWho = response.data.filter((item)=>item.type.length === 4 ? item.name : '');
-                }
-            } )
+        this.$store.dispatch('setProvice');
     }
 }).$mount('#app')
 
