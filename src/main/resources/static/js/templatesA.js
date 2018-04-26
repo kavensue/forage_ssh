@@ -161,3 +161,18 @@ const userMes = {
     </div>
 </div>
 `}
+//历史记录
+const history = {
+    template: `
+<div>
+    <h3>Hello, history</h3>
+</div>
+`}
+
+//信息统计
+const infoCount = {
+    template: `
+<div>
+    <h3>Hello, info</h3>
+</div>
+`}

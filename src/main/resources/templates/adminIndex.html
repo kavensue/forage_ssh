@@ -26,6 +26,10 @@
                 <li v-bind:class="{navActive : navIndex==4 ? true : false}" @click="navIndex = 4">
                 <router-link to="/userMes">用户信息</router-link></li>
                 <li v-bind:class="{navActive : navIndex==5 ? true : false}" @click="navIndex = 5">
+                <router-link to="/history">历史记录</router-link></li>
+                <li v-bind:class="{navActive : navIndex==6 ? true : false}" @click="navIndex = 6">
+                <router-link to="/infoCount">信息统计</router-link></li>
+                <li v-bind:class="{navActive : navIndex==7 ? true : false}" @click="navIndex = 7">
                 <router-link to="/exit">退出系统</router-link></li>
             </ul>
             <router-view class="router-view"></router-view>

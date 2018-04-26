@@ -4,7 +4,9 @@ const routes = [
     { path: '/feedReserve', name: 'feedReserve', component: feedReserve, alias: '/' },
     { path: '/feedProvice', component: feedProvice },
     { path: '/feedStore', component: feedStore },
-    { path: '/userMes', component: userMes }
+    { path: '/userMes', component: userMes },
+    { path: '/history', component: history },
+    { path: '/infoCount', component: infoCount }
 ]
 const router = new VueRouter({
     routes
