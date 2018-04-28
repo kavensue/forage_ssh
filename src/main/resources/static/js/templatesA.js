@@ -165,7 +165,26 @@ const userMes = {
 const history = {
     template: `
 <div>
-    <h3>Hello, history</h3>
+    <div class="h-table-wrap">
+        <div class="h-table-head">
+            <div><span>饲料信息编号</span></div>
+            <div><span>饲料种类</span></div>
+            <div><span>饲料数量</span></div>
+            <div><span>饲料单位</span></div>
+            <div><span>出入库时间</span></div>
+            <div><span>仓库管理员</span></div>
+            <div><span>喂饲人员</span></div>
+        </div>
+        <div class="h-table-body" v-for="item in $store.state.history">
+            <div><span>{{item.id}}</span></div>
+            <div><span>{{item.kind}}</span></div>
+            <div><span>{{item.num}}</span></div>
+            <div><span>{{item.unit}}</span></div>
+            <div><span>{{item.time}}</span></div>
+            <div><span>{{item.admin}}</span></div>
+            <div><span>{{item.feeder}}</span></div>
+        </div>
+    </div>
 </div>
 `}
 
@@ -173,6 +192,68 @@ const history = {
 const infoCount = {
     template: `
 <div>
-    <h3>Hello, info</h3>
+    
+    <router-view class="ic-router-view"></router-view>
+</div>
+`}
+
+const feedCount = {
+    template: `
+<div>
+    <div class="ic-head-tab">
+        <router-link to="/infoCount/feedCount" class="select-active">饲料统计</router-link>
+        <router-link to="/infoCount/quesCount">问题统计</router-link>
+    </div>
+    <div class="fc-head-tab">
+        <div class="fc-feed-out">
+            <div class="fc-head"><span>饲料出库</span></div>
+            <div class="feed-out-head">
+                <span>饲料种类</span>
+                <span>饲料数量</span>
+                <span>饲料单位</span>
+            </div>
+            <div class="feed-out-body" v-for="item in $store.state.infoCount.feedCount.out">
+                <span>{{item.kind}}</span>
+                <span>{{item.num}}</span>
+                <span>{{item.unit}}</span>
+            </div>
+        </div>
+        <div class="fc-feed-in">
+            <div class="fc-head"><span>饲料入库</span></div>
+            <div class="feed-in-head">
+                <span>饲料种类</span>
+                <span>饲料数量</span>
+                <span>饲料单位</span>
+            </div>
+            <div class="feed-in-body" v-for="item in $store.state.infoCount.feedCount.in">
+                <span>{{item.kind}}</span>
+                <span>{{item.num}}</span>
+                <span>{{item.unit}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+`}
+const quesCount = {
+    template: `
+<div>
+    <div class="ic-head-tab">
+        <router-link to="/infoCount/feedCount">饲料统计</router-link>
+        <router-link to="/infoCount/quesCount" class="select-active">问题统计</router-link>
+    </div>
+    <div class="qc-body">
+        <div class="qc-flex qc-flex-head">
+            <span>喂饲人员</span>
+            <span>问题地点</span>
+            <span>问题类别</span>
+            <span>问题数量</span>
+        </div>
+        <div class="qc-flex qc-flex-body" v-for="item in $store.state.infoCount.quesCount">
+            <span>{{item.feeder}}</span>
+            <span>{{item.where}}</span>
+            <span>{{item.kind}}</span>
+            <span>{{item.num}}</span>
+        </div>
+    </div>
 </div>
 `}

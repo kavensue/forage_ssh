@@ -36,11 +36,9 @@
         flex: 1 0 80%;
         padding: 40px;
         .p-container{
-            padding-left: 5%;
-            label:after{
-                content: '';
-                display: block;
-                margin-bottom: 10px;
+            .drop-warpper{
+                width: 150px;
+                text-align: center;
             }
             #p-note{
                 display: inline-block;
@@ -61,28 +59,69 @@
             }
         }
         .f-container{
-            h4{
-                text-align: left;
-            }
-            #form-wraper{
-                label{
-                    display: inline-block;
-                    margin-right: 20px;
+            .f-container-head, .f-container-body{
+                width: 500px;
+                display: flex;
+                justify-content: space-between;
+                input{
+                    width: 40px;
                 }
-                #btn-submit{
-                    #common-btn();
-                    width: 80px;
-                    height: 30px;
-                    line-height: 30px;
-                    font-size: 1rem;
-                    margin-left: 20px;
-                    &:hover{
-                        opacity: 0.7;
-                    }
+            }
+            .f-container-head{
+                padding-bottom: 15px;
+                border-bottom: 1px solid #666;
+            }
+            .f-container-body{
+                margin-top: 20px;
+                padding-bottom: 15px;
+                border-bottom: 1px dotted #666;
+            }
+            .f-container-btns{
+                width: 500px;
+                text-align: right;
+                button{
+                    border: 0;
+                    background-color: orange;
+                    margin-top: 15px;
+                    color: #FFF;
                 }
             }
         }
         .t-container{
+            width: 500px;
+            .t-item{
+                display: inline-block;
+                width: 120px;
+                text-align: center;
+            }
+            .t-item-do{
+                display: inline-block;
+            }
+            .t-item-do-r{
+                width: 45px;
+                padding-right: 15px;
+                text-align: right;
+            }
+            .t-container-head{
+                padding-bottom: 15px;
+                border-bottom: 1px solid #333;
+            }
+            .t-container-body{
+                margin-top: 20px;
+                padding-bottom: 15px;
+                border-bottom: 1px dotted #ccc;
+            }
+            .t-container-btns{
+                width: 500px;
+                margin-top: 20px;
+                text-align: right;
+                button{
+                    border: 0;
+                    background-color: orange;
+                    color: #FFF;
+                    border-radius: 5px;
+                }
+            }
             #form-task{
                 display: flex;
                 flex-direction: column;

@@ -638,3 +638,95 @@
 .admin-wrapper .um-add-window .um-add-window-btn :hover {
   opacity: .7;
 }
+.h-table-head,
+.h-table-body {
+  display: flex;
+  width: 800px;
+  justify-content: space-between;
+}
+.h-table-head div,
+.h-table-body div {
+  width: 110px;
+  text-align: center;
+}
+.h-table-head {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #CCC;
+}
+.h-table-body {
+  margin-top: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #CCC;
+}
+.ic-head-tab {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: 0 auto;
+  height: 50px;
+}
+.fc-head {
+  margin-bottom: 15px;
+}
+.fc-feed-out,
+.fc-feed-in {
+  padding: 15px 10px;
+  border: 1px dotted #333;
+}
+.fc-feed-in {
+  margin-top: 20px;
+}
+.fc-head-tab {
+  width: 500px;
+  margin: 0 auto;
+}
+.feed-out-head,
+.feed-out-body,
+.feed-in-head,
+.feed-in-body {
+  display: flex;
+  width: 450px;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.feed-out-head span,
+.feed-out-body span,
+.feed-in-head span,
+.feed-in-body span {
+  display: inline-block;
+  width: 110px;
+  text-align: center;
+}
+.feed-out-head,
+.feed-in-head {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #CCC;
+}
+.feed-out-body,
+.feed-in-body {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #333;
+}
+.select-active {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  padding: 5px;
+  background-color: #CCC;
+  color: #FFF !important;
+}
+.qc-body {
+  width: 520px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+.qc-body .qc-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.qc-body .qc-flex-head,
+.qc-body .qc-flex-body {
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #CCC;
+}
