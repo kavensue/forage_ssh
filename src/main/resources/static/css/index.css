@@ -62,13 +62,9 @@
   flex: 1 0 80%;
   padding: 40px;
 }
-.wrapper .router-view .p-container {
-  padding-left: 5%;
-}
-.wrapper .router-view .p-container label:after {
-  content: '';
-  display: block;
-  margin-bottom: 10px;
+.wrapper .router-view .p-container .drop-warpper {
+  width: 150px;
+  text-align: center;
 }
 .wrapper .router-view .p-container #p-note {
   display: inline-block;
@@ -91,26 +87,70 @@
 .wrapper .router-view .p-container .btn-submit:hover {
   opacity: 0.7;
 }
-.wrapper .router-view .f-container h4 {
-  text-align: left;
+.wrapper .router-view .f-container .f-container-head,
+.wrapper .router-view .f-container .f-container-body {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
 }
-.wrapper .router-view .f-container #form-wraper label {
-  display: inline-block;
-  margin-right: 20px;
+.wrapper .router-view .f-container .f-container-head input,
+.wrapper .router-view .f-container .f-container-body input {
+  width: 40px;
 }
-.wrapper .router-view .f-container #form-wraper #btn-submit {
+.wrapper .router-view .f-container .f-container-head {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #666;
+}
+.wrapper .router-view .f-container .f-container-body {
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted #666;
+}
+.wrapper .router-view .f-container .f-container-btns {
+  width: 500px;
+  text-align: right;
+}
+.wrapper .router-view .f-container .f-container-btns button {
   border: 0;
-  border-radius: 5px;
   background-color: orange;
-  color: #Fff;
-  width: 80px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 1rem;
-  margin-left: 20px;
+  margin-top: 15px;
+  color: #FFF;
 }
-.wrapper .router-view .f-container #form-wraper #btn-submit:hover {
-  opacity: 0.7;
+.wrapper .router-view .t-container {
+  width: 500px;
+}
+.wrapper .router-view .t-container .t-item {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+}
+.wrapper .router-view .t-container .t-item-do {
+  display: inline-block;
+}
+.wrapper .router-view .t-container .t-item-do-r {
+  width: 45px;
+  padding-right: 15px;
+  text-align: right;
+}
+.wrapper .router-view .t-container .t-container-head {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+.wrapper .router-view .t-container .t-container-body {
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted #ccc;
+}
+.wrapper .router-view .t-container .t-container-btns {
+  width: 500px;
+  margin-top: 20px;
+  text-align: right;
+}
+.wrapper .router-view .t-container .t-container-btns button {
+  border: 0;
+  background-color: orange;
+  color: #FFF;
+  border-radius: 5px;
 }
 .wrapper .router-view .t-container #form-task {
   display: flex;

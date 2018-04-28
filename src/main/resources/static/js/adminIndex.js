@@ -4,7 +4,12 @@ const routes = [
     { path: '/feedReserve', name: 'feedReserve', component: feedReserve, alias: '/' },
     { path: '/feedProvice', component: feedProvice },
     { path: '/feedStore', component: feedStore },
-    { path: '/userMes', component: userMes }
+    { path: '/userMes', component: userMes },
+    { path: '/history', component: history },
+    { path: '/infoCount', component: infoCount, children: [
+        { path: 'feedCount', component: feedCount, alias: '/' },
+        { path: 'quesCount', component: quesCount }
+    ] }
 ]
 const router = new VueRouter({
     routes
@@ -49,6 +54,63 @@ const store = new Vuex.Store({
         um_data: {
             um_users: [ {name: '', sex: '', usr: '', pass: '', id: ''} ],
             addData: {name: '', sex: '', usr: '', pass: '', id: ''} 
+        },
+        //历史记录
+        history: [{
+            id: 1,
+            kind: '小猪料',
+            num: 125,
+            unit: '公斤',
+            time: '2018-03-27',
+            admin: 'xiaoming',
+            feeder: 'xiaohua'
+        },{
+            id: 2,
+            kind: '小猪料',
+            num: 15,
+            unit: '斤',
+            time: '2018-04-27',
+            admin: 'xiaoming',
+            feeder: 'xiaohua'
+        }],
+        //信息统计
+        infoCount: {
+            //饲料统计
+            feedCount: {
+                out: [{
+                    kind: '大猪料',
+                    num: 115,
+                    unit: '公斤'
+                },{
+                    kind: '大猪料',
+                    num: 115,
+                    unit: '公斤'
+                },{
+                    kind: '大猪料',
+                    num: 115,
+                    unit: '公斤'
+                }],
+                in: [{
+                    kind: '小猪料',
+                    num: 115,
+                    unit: '斤'
+                },{
+                    kind: '小猪料',
+                    num: 115,
+                    unit: '斤'
+                },{
+                    kind: '小猪料',
+                    num: 115,
+                    unit: '斤'
+                }]
+            },
+            //问题统计
+            quesCount: [{
+                feeder: 'xiaoming',
+                where: '1号猪圈',
+                kind: '发烧',
+                num: 2
+            }]
         }
     },
     mutations: {
