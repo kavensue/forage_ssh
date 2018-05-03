@@ -108,6 +108,8 @@ public class AdminController {
         return forageStoreService.forageStoreUpdate(request);
     }
 
+
+
     //饲料出入库信息删除
     @RequestMapping(value = "/forageInfomationDelete",method = RequestMethod.GET)
     @ResponseBody

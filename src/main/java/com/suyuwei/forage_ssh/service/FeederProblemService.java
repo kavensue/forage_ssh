@@ -30,6 +30,7 @@ public class FeederProblemService {
         }
         JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
         JSONObject jsonObject=jsonArray.getJSONObject(0);
+
         String place=jsonObject.getString("place");
         String type=jsonObject.getString("type");
         String remark=jsonObject.getString("remark");
