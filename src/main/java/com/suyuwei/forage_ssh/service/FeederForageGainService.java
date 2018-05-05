@@ -31,6 +31,7 @@ public class FeederForageGainService {
         }
         String requestString=requestBody.toString();
         JSONArray jsonArray=JSONArray.parseArray(requestString);
+
         //生成时间字符串
         Date day=new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

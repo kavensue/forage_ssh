@@ -88,4 +88,14 @@ public class FeederController {
         response.setHeader("Access-Control-Allow-Origin","*");
         return feederTaskService.feederTaskGet();
     }
+
+    //改变饲养任务完成状态
+    @RequestMapping(value = "/feederTaskStatusChange",method = RequestMethod.POST)
+    @ResponseBody
+    public int feederTaskStatusChange(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html");
+        response.setHeader("Access-Control-Allow-Origin","*");
+        return feederTaskService.feederTaskStatusChange(request);
+    }
 }
