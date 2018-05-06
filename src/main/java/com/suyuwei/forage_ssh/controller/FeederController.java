@@ -34,11 +34,10 @@ public class FeederController {
     @RequestMapping(value = "/feederProblemAdd",method = RequestMethod.POST)
     @ResponseBody
     public int feederProblemAdd(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        feederProblemService.feederProblemAdd(request);
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
         response.setHeader("Access-Control-Allow-Origin","*");
-        return 0;
+        return feederProblemService.feederProblemAdd(request);
     }
 
     //获得喂饲人员所有的反馈问题
@@ -58,8 +57,7 @@ public class FeederController {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
         response.setHeader("Access-Control-Allow-Origin","*");
-        feederForageGainService.feederForageGainAdd(request);
-        return 0;
+        return feederForageGainService.feederForageGainAdd(request);
     }
 
     //获取饲养员所有领取饲料记录
@@ -79,8 +77,7 @@ public class FeederController {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
         response.setHeader("Access-Control-Allow-Origin","*");
-        feederTaskService.feederTaskAdd(request);
-        return 0;
+        return feederTaskService.feederTaskAdd(request);
     }
 
     //获取饲养任务
