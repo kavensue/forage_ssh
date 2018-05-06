@@ -6,7 +6,6 @@ import com.suyuwei.forage_ssh.entity.ForageStoreEntity;
 import com.suyuwei.forage_ssh.service.ForageInfomationService;
 import com.suyuwei.forage_ssh.service.ForageService;
 import com.suyuwei.forage_ssh.service.ForageStoreService;
-import com.suyuwei.forage_ssh.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
