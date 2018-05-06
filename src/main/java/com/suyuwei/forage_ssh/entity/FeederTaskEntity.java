@@ -25,6 +25,17 @@ public class FeederTaskEntity {
     @Column(name = "feeder_task_note")
     private String note;
 
+    @Column(name = "is_finished")
+    private Long isFinished;
+
+    public Long getIsFinished() {
+        return isFinished;
+    }
+
+    public void setIsFinished(Long isFinished) {
+        this.isFinished = isFinished;
+    }
+
     public Long getId() {
         return id;
     }

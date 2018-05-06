@@ -45,12 +45,14 @@ public class FeederTaskService {
             String place=jsonObject.getString("place");
             String target=jsonObject.getString("target");
             String note=jsonObject.getString("note");
+            Long isFinished= Long.valueOf(0);//未完成状态0，完成状态1
 
             feederTaskEntity.setFeederName(feederName);
             feederTaskEntity.setPlace(place);
             feederTaskEntity.setTarget(target);
             feederTaskEntity.setTime(time);
             feederTaskEntity.setNote(note);
+            feederTaskEntity.setIsFinished(isFinished);
             feederTaskJPA.save(feederTaskEntity);
         }
 
@@ -61,6 +63,26 @@ public class FeederTaskService {
     public List<FeederTaskEntity> feederTaskGet(){
         List<FeederTaskEntity> feederTaskEntityList=feederTaskJPA.findAll();
         return feederTaskEntityList;
+    }
+
+    //修改饲养任务完成状态
+    public int feederTaskStatusChange(HttpServletRequest request) throws IOException {
+        BufferedReader reader=request.getReader();
+        String input;
+        StringBuffer requestBody=new StringBuffer();
+        while((input = reader.readLine()) != null) {
+            requestBody.append(input);
+        }
+        String requestString=requestBody.toString();
+        JSONArray jsonArray=JSONArray.parseArray(requestString);
+        JSONObject jsonObject=jsonArray.getJSONObject(0);
+
+        Long id= Long.valueOf(jsonObject.getString("id"));
+        FeederTaskEntity feederTaskEntity=feederTaskJPA.findOne(id);
+        feederTaskEntity.setIsFinished(Long.valueOf(1));//未完成状态0，完成状态1
+        feederTaskJPA.save(feederTaskEntity);
+
+        return 0;
     }
 
 }

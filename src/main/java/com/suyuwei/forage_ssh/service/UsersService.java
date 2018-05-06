@@ -113,4 +113,38 @@ public class UsersService {
         usersJPA.save(usersEntity);
         return 0;
     }
+
+    //饲养员个人信息查询
+    public UsersEntity feederInfoGet(){
+        UsersEntity usersEntity=new UsersEntity();
+        usersEntity=usersJPA.findByName("xiaoming");
+        return usersEntity;
+    }
+
+    //饲养员个人信息修改
+    public int feederInfoUpdate(HttpServletRequest request) throws IOException {
+        BufferedReader reader=request.getReader();
+        String input;
+        StringBuffer requestBody=new StringBuffer();
+        while((input = reader.readLine()) != null) {
+            requestBody.append(input);
+        }
+        JSONArray jsonArray=JSONArray.parseArray(requestBody.toString());
+        JSONObject jsonObject=jsonArray.getJSONObject(0);
+
+        Long id=jsonObject.getLong("id");
+        String name=jsonObject.getString("name");
+        String password=jsonObject.getString("password");
+        String type=jsonObject.getString("type");
+        String sex=jsonObject.getString("sex");
+
+        UsersEntity usersEntity=new UsersEntity();
+        usersEntity.setId(id);
+        usersEntity.setName(name);
+        usersEntity.setPassword(password);
+        usersEntity.setType(type);
+        usersEntity.setSex(sex);
+        usersJPA.save(usersEntity);
+        return 0;
+    }
 }
