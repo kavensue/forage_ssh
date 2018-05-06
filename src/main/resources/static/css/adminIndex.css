@@ -730,3 +730,13 @@
   padding-bottom: 15px;
   border-bottom: 1px solid #CCC;
 }
+.history-del-btn{
+  border: 0;
+  background-color: orange;
+  padding: 5px;
+  color: #FFF;
+  border-radius: 5px;
+}
+.history-del-btn:hover{
+  opacity: .7;
+}

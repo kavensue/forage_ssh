@@ -174,15 +174,17 @@ const history = {
             <div><span>出入库时间</span></div>
             <div><span>仓库管理员</span></div>
             <div><span>喂饲人员</span></div>
+            <div><span>操作</span></div>
         </div>
         <div class="h-table-body" v-for="item in $store.state.history">
             <div><span>{{item.id}}</span></div>
-            <div><span>{{item.kind}}</span></div>
-            <div><span>{{item.num}}</span></div>
+            <div><span>{{item.type}}</span></div>
+            <div><span>{{item.number}}</span></div>
             <div><span>{{item.unit}}</span></div>
             <div><span>{{item.time}}</span></div>
-            <div><span>{{item.admin}}</span></div>
-            <div><span>{{item.feeder}}</span></div>
+            <div><span>{{item.adminName}}</span></div>
+            <div><span>{{item.feederName}}</span></div>
+            <div @click="$store.dispatch('delHistoryItem', item)"><span class="history-del-btn">删除</span></div>
         </div>
     </div>
 </div>

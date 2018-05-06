@@ -19,7 +19,7 @@ const t_problem = {
             问题描述<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click="test">饲料不足</el-dropdown-item>
+            <el-dropdown-item>饲料不足</el-dropdown-item>
             <el-dropdown-item>饲料质量有问题</el-dropdown-item>
             <el-dropdown-item>猪食欲不振</el-dropdown-item>
             <el-dropdown-item>猪发烧了</el-dropdown-item>
@@ -27,7 +27,7 @@ const t_problem = {
         </el-dropdown-menu>
     </el-dropdown>
     <input type="text" name="note" placeholder="备注" id="p-note"/>
-    <button id="btn-submit" type="button" class="btn-submit" onclick="test">提交</button>
+    <button id="btn-submit" type="button" class="btn-submit">提交</button>
 </div>
 </div>
     `
