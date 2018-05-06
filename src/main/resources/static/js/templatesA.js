@@ -178,7 +178,7 @@ const history = {
         </div>
         <div class="h-table-body" v-for="item in $store.state.history">
             <div><span>{{item.id}}</span></div>
-            <div><span>{{item.kind}}</span></div>
+            <div><span>{{item.type}}</span></div>
             <div><span>{{item.number}}</span></div>
             <div><span>{{item.unit}}</span></div>
             <div><span>{{item.time}}</span></div>

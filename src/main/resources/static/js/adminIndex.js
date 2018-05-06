@@ -58,7 +58,7 @@ const store = new Vuex.Store({
         //历史记录
         history: [{
             id: 1,
-            kind: '小猪料',
+            type: '小猪料',
             number: 125,
             unit: '公斤',
             time: '2018-03-27',
@@ -446,7 +446,7 @@ const store = new Vuex.Store({
         delHistoryItem: (content, obj) => {
             let _do = window.confirm('确定删除吗?');
             if(_do){
-               axios.get( `${URL}/userDelete?id=${objid}` )
+               axios.get( `${URL}/forageInfomationDelete?id=${obj.id}` )
                 .then( (response)=>{
                     if( response.data == 0 ){
                         content.state.history.splice( obj.index, 1 );
