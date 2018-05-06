@@ -59,19 +59,11 @@ const store = new Vuex.Store({
         history: [{
             id: 1,
             kind: '小猪料',
-            num: 125,
+            number: 125,
             unit: '公斤',
             time: '2018-03-27',
-            admin: 'xiaoming',
-            feeder: 'xiaohua'
-        },{
-            id: 2,
-            kind: '小猪料',
-            num: 15,
-            unit: '斤',
-            time: '2018-04-27',
-            admin: 'xiaoming',
-            feeder: 'xiaohua'
+            adminName: 'xiaoming',
+            feederName: 'xiaohua'
         }],
         //信息统计
         infoCount: {
@@ -439,6 +431,32 @@ const store = new Vuex.Store({
                     content.state.proviceWho = response.data.filter((item)=>item.type.length === 4 ? item.name : '');
                 }
             } )
+        },
+        //历史记录页面信息获取
+        getHistoryData: (content)=>{
+            axios.get(URL + '/forageInfomationGet')
+                .then( (response)=>{
+                    if(response.status != 200){
+                        alert('抱歉, 出错了!')
+                    }else{
+                        content.state.history = response.data;
+                    }
+                } )
+        },
+        delHistoryItem: (content, obj) => {
+            let _do = window.confirm('确定删除吗?');
+            if(_do){
+               axios.get( `${URL}/userDelete?id=${objid}` )
+                .then( (response)=>{
+                    if( response.data == 0 ){
+                        content.state.history.splice( obj.index, 1 );
+                        alert('删除成功')
+                        content.dispatch('getHistoryData');
+                    }else{
+                        alert('未知错误')
+                    }
+                } ) 
+            }else{}           
         }
     }
 })
@@ -462,6 +480,8 @@ var vm = new Vue({
                 case '/feedStore':
                     that.$store.dispatch('getFeedStore');
                     break;
+                case '/history':
+                    that.$store.dispatch('getHistoryData');
                 default: 
                     break;
             }
