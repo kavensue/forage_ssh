@@ -41,7 +41,7 @@ const t_foragegain = {
         <span class="t-item">
             <el-dropdown class="drop-warpper">
                 <span class="el-dropdown-link">
-                    {{$store.state.getKind}}<i class="el-icon-arrow-down el-icon--right"></i>
+                    {{item.type}}<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item v-for="(item, index) in $store.state.getKinds" :key="index"
@@ -79,7 +79,7 @@ const t_feedtask = {
         <span class="t-item">
             <el-dropdown class="drop-warpper">
                 <span class="el-dropdown-link">
-                    {{$store.state.feedPlace}}<i class="el-icon-arrow-down el-icon--right"></i>
+                    {{item.place}}<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item v-for="(item, index) in $store.state.feedPlaces"
@@ -92,7 +92,7 @@ const t_feedtask = {
         <span class="t-item">
             <el-dropdown class="drop-warpper">
                 <span class="el-dropdown-link">
-                    {{$store.state.feedObj}}<i class="el-icon-arrow-down el-icon--right"></i>
+                    {{item.obj}}<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item v-for="(item, index) in $store.state.feedObjs" 

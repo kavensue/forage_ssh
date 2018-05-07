@@ -30,14 +30,14 @@ window.onload = function(){
             }],
             getKind: '问题种类',
             getKinds: ['大猪料', '小猪料'],
-            getFeeds: [{}],
+            getFeeds: [{type: '饲料种类', number: '', unit: ''}],
             feedPlace: '喂食地点',
             feedPlaces: ['1号猪舍', '2号猪舍'],
             feedObj: '喂食对象',
             feedObjs: ['大猪', '小猪'],
             subFeedObj: [{   //用于提交
-                place: '',
-                obj: '' 
+                place: '喂食地点',
+                obj: '喂食对象' 
             }]  
         },
         mutations: {
@@ -52,6 +52,7 @@ window.onload = function(){
             //领取饲料 -- 饲料种类
             selectKind(state, o){
                 state.getKind = state.getKinds[o.index];
+                state.getFeeds[o.index].type = state.getKind;
             },
                     //---删除
             delItem(state, o){
@@ -61,7 +62,7 @@ window.onload = function(){
                 }
             },
             addItem(state){
-                state.getFeeds.push({})
+                state.getFeeds.push({type: '饲料种类'})
             },
             clearAll(state){
                 state.getFeeds.splice(0, state.getFeeds.length - 1)
@@ -78,7 +79,7 @@ window.onload = function(){
                 _id.obj = state.feedObjs[o.index];
             },
             addPlace(state){
-                state.subFeedObj.push({place: '', obj: ''})
+                state.subFeedObj.push({place: '喂食地点', obj: '喂食对象'})
             },
             delPlace(state, index){
                 if(state.subFeedObj.lnegth === 1) return;
@@ -94,17 +95,23 @@ window.onload = function(){
                 obj.place = content.state.title == '问题地点' ? '' : content.state.title;
                 obj.type = content.state.p_Dis == '问题描述' ? '' : content.state.p_Dis;
                 obj.remark = content.state.alias;
-                console.log(obj);
-
-                axios.post(URL + '/feederProblemAdd/', obj)
-                    .then( (response)=>{
-                        console.log('response')
-                    } )
+                console.log('1     ' + obj);
+                axios.post(URL +'/feederProblemAdd', [obj])
+                .then( (response)=>{
+                    if(response.status != 200){
+                        alert('抱歉, 出错了!')
+                    }else{
+                        console.log(response)
+                    }
+                } )
+                // axios.post(URL + '/feederProblemAdd/', obj)
+                //     .then( (response)=>{
+                //         console.log('response')
+                //     } )
             },
             subFeedData(content){
                 let obj = {};
-                console.log(content.state.getFeeds);
-
+                console.log('2     ' + content.state.getFeeds);
                 axios.post(URL + '/feederForageGainAdd', content.state.getFeeds)
                     .then( (response)=>{
                         console.log(response)
@@ -118,6 +125,7 @@ window.onload = function(){
                     obj[i].target = content.state.subFeedObj[i].obj;
                     obj[i].note = '';
                 }
+                console.log('3   ' + obj)
                 axios.post(URL + '/feederTaskAdd', obj)
                     .then( (response) =>{
                         console.log(response);
