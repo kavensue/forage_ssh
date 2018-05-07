@@ -96,7 +96,7 @@ window.onload = function(){
                 obj.remark = content.state.alias;
                 console.log(obj);
 
-                axios.post(URL + '/feederProblemAdd', obj)
+                axios.post(URL + '/feederProblemAdd/', obj)
                     .then( (response)=>{
                         console.log('response')
                     } )
