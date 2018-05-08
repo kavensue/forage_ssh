@@ -18,24 +18,6 @@ import java.util.List;
 public class UsersController {
     @Autowired
     private UsersService usersService;
-
-//    /**
-//     * 仓库管理者的菜单重定向
-//     * @return
-//     */
-//    @RequestMapping(value = "/adminIndex",method = RequestMethod.GET)
-//    public String adminLogin(){
-//        return "adminIndex";
-//    }
-//
-//    @RequestMapping(value = "/adminUserManagement",method = RequestMethod.GET)
-//    public String adminUserManagement(){return "adminUserManagement";}
-//
-//    @RequestMapping(value = "/adminForageManagement",method = RequestMethod.GET)
-//    public String adminForageManagement(){return "adminForageManagement";}
-//
-//    @RequestMapping(value = "/adminForageGainManagement",method = RequestMethod.GET)
-//    public String adminForageGainManagement(){return "adminForageGainManagement";}
     /**
      * 进行账户密码验证
      * @param request
