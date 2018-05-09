@@ -208,7 +208,7 @@ const feedCount = {
     </div>
     <div class="fc-head-tab">
         <div class="fc-feed-out">
-            <div class="fc-head"><span>饲料出库</span></div>
+            <div class="fc-head"><span>饲料入库</span></div>
             <div class="feed-out-head">
                 <span>饲料种类</span>
                 <span>饲料数量</span>
@@ -221,7 +221,7 @@ const feedCount = {
             </div>
         </div>
         <div class="fc-feed-in">
-            <div class="fc-head"><span>饲料入库</span></div>
+            <div class="fc-head"><span>饲料出库</span></div>
             <div class="feed-in-head">
                 <span>饲料种类</span>
                 <span>饲料数量</span>
