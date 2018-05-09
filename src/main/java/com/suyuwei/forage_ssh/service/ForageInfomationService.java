@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.suyuwei.forage_ssh.dao.ForageInfomationJPA;
 import com.suyuwei.forage_ssh.entity.ForageInfomationEntity;
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -114,5 +120,10 @@ public class ForageInfomationService {
             forageInfomationJPA.save(forageInfomationEntity);
         }
         return 0;
+    }
+
+    //导出全部饲料出入库记录excel
+    public void downloadForageInfoList(){
+
     }
 }
